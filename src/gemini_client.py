@@ -11,6 +11,9 @@ def ask_gemini(question: str)->str:
     try:
         response=client.models.generate_content(model=config.GEMINI_MODEL,
                                             contents=question)
+                
+        print(f"Client Type: {type(client)}")
+        print(f"Dir client: {dir(client)}")
         return response.text
     except Exception as e:
         return f"Gemini Api Error: {e}"
