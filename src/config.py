@@ -14,3 +14,5 @@ if not GEMINI_MODEL:
 EMBEDDING_MODEL=os.getenv("EMBEDDING_MODEL")
 if not EMBEDDING_MODEL:
     raise ValueError("EMBEDDING_MODEL not found")
+
+CHROMA_COLLECTION = "documents"

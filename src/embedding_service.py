@@ -1,6 +1,6 @@
 from google import genai
-import config
-from google.genai import types
+from src import config
+
 
 
 
@@ -15,14 +15,12 @@ class EmbeddingService:
         embedContentResponse=self.client.models.embed_content(
             model=config.EMBEDDING_MODEL,
             contents=text)
-            
-        print(embedContentResponse)
-        print(type(embedContentResponse))
-        print(type(embedContentResponse.embeddings))
-        print(type(embedContentResponse.embeddings[0]))
-        print(type(embedContentResponse.embeddings[0].values))
-        
         return embedContentResponse.embeddings[0].values
+
+            
+   
+        
+       
         
     
     def embed_query(self, question: str) -> list[float]:

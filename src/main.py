@@ -1,5 +1,6 @@
 import gemini_client as gc
 from embedding_service import EmbeddingService
+from vector_store import VectorStore
 
 
 
@@ -31,4 +32,15 @@ while True:
     response1=embService.embed_document(text)
     response2=embService.embed_document(text)
     print(response1==response2)
+    
+    embeddings=[0.1] * 3072
+    metadata={"page":36, "source": "test.pdf"}
+    chunk = "Python is an interpreted language."
+    vector_store=VectorStore()
+    vector_store.add(chunk,embeddings=embeddings,metadatas=metadata)
+    print("Document chunk added successfully!")
+    
+    results=vector_store.search(embeddings=embeddings)
+    print(results)
+    
     
