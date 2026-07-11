@@ -10,9 +10,10 @@ class Retriever:
 
     def retrieve(
         self,
-        question: str
-    ) -> list[str]:
+        question: str) -> list[str]:
 
         embedding = self.embedding_service.embed_document(question)
 
-        return self.vector_store.search(embedding)
+        searchResults = self.vector_store.search(embedding)
+        #remove duplicates and return
+        return list(set(searchResults))

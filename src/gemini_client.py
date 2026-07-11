@@ -10,9 +10,9 @@ class GeminiClient:
     def __init__(self):
         self.client=client
 
-    def ask_gemini(question: str)->str:
+    def ask(self,question: str)->str:
         try:
-            response=client.models.generate_content(model=GEMINI_MODEL,
+            response=self.client.models.generate_content(model=GEMINI_MODEL,
                                             contents=question)
              #print(f"Client Type: {type(client)}")
              #print(f"Dir client: {dir(client)}")
